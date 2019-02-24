@@ -1,5 +1,4 @@
 import 'package:anubavamtask/model/SignUpDetail.dart';
-import 'package:sqflite/sqflite.dart';
 import './LoginAbstract.dart';
 import './../../database/SignupDb_helper.dart';
 

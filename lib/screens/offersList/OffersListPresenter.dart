@@ -1,8 +1,8 @@
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import 'package:anubavamtask/screens/offersList/OffersListAbsract.dart';
-import 'package:anubavamtask/model/OffersList.dart';
-import 'package:anubavamtask/model/OfferDetail.dart';
+import './../../screens/offersList/OffersListAbsract.dart';
+import './../../model/OffersList.dart';
+import './../../model/OfferDetail.dart';
 import 'package:sqflite/sqflite.dart';
 import './../../database/Offersdb_helper.dart';
 
@@ -38,7 +38,6 @@ class OffersListPresenter implements AbstractOfferListPresenter {
   getOffers() async {
     http.Response response = await client.get(
         Uri.encodeFull('http://sas.shukranrewards.com/mobile/v3/OffersList'));
-    // print(response.body);
 
     if (response.statusCode == 200) {
       offersList = OffersList.jsonToObject(json.decode(response.body));
@@ -47,8 +46,6 @@ class OffersListPresenter implements AbstractOfferListPresenter {
       for (int i = 0; i < offersList.data.length; i++) {
         await databaseHelper.insertOfferDetail(offersList.data[i]);
       }
-
-      print(offersList.data[1].description);
     }
   }
 

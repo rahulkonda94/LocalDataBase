@@ -7,6 +7,7 @@ import './../model/SignUpDetail.dart';
 class SignUpDatabaseHelper {
   static SignUpDatabaseHelper _databaseHelper; // Singleton DatabaseHelper
   static Database _database; // Singleton Database
+  String registrationTable = 'registration_table';
 
   String colName = 'name';
   String colUsername = 'username';
@@ -17,7 +18,6 @@ class SignUpDatabaseHelper {
   String colMobile = 'mobile';
   String colDob = 'dob';
   String colPrivacyPolicy = 'privacyPolicy';
-  String registrationTable = 'registration_table';
 
   SignUpDatabaseHelper._createInstance(); // Named constructor to create instance of DatabaseHelper
 
@@ -56,7 +56,7 @@ class SignUpDatabaseHelper {
     }
   }
 
-  // Fetch Operation: Get all note objects from database
+  // Fetch Operation: Get all member objects from database
   Future<List<Map<String, dynamic>>> getMembersMapList() async {
     Database db = await this.database;
 
@@ -64,14 +64,14 @@ class SignUpDatabaseHelper {
     return result;
   }
 
-  // Insert Operation: Insert a Note object to database
+  // Insert Operation: Insert a member object to database
   Future<int> insertMember(SignUpDetail signUpDetails) async {
     Database db = await this.database;
     var result = await db.insert(registrationTable, signUpDetails.toMap());
     return result;
   }
 
-  // Get the 'Map List' [ List<Map> ] and convert it to 'Note List' [ List<Note> ]
+  // Get the 'Map List' [ List<Map> ] and convert it to 'member List' [ List<member> ]
   Future<List<SignUpDetail>> getMembersList() async {
     var membersMapList =
         await getMembersMapList(); // Get 'Map List' from database
@@ -81,7 +81,7 @@ class SignUpDatabaseHelper {
 
 
     List<SignUpDetail> membersList = List<SignUpDetail>();
-    // For loop to create a 'Note List' from a 'Map List'
+    // For loop to create a 'member List' from a 'Map List'
     for (int i = 0; i < count; i++) {
       membersList.add(SignUpDetail.fromMapObject(membersMapList[i]));
     }
