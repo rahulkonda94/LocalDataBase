@@ -6,7 +6,7 @@ class SignUpDetail {
   String location;
   String shippingAddress;
   int mobile;
-  int dob;
+  String dob;
   int privacyPolicy;
 
   Map<String, dynamic> toMap() {

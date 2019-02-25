@@ -50,7 +50,7 @@ class SignUpDatabaseHelper {
   void _createDb(Database db, int newVersion) async {
     try {
       await db.execute(
-          'CREATE TABLE $registrationTable( $colName TEXT, $colUsername TEXT, $colEmail TEXT PRIMARY KEY, $colPassword TEXT, $colLocation TEXT, $colShippingAddress TEXT, $colDob INTEGER,$colMobile INTEGER,$colPrivacyPolicy INTEGER)');
+          'CREATE TABLE $registrationTable( $colName TEXT, $colUsername TEXT, $colEmail TEXT PRIMARY KEY, $colPassword TEXT, $colLocation TEXT, $colShippingAddress TEXT, $colDob TEXT,$colMobile INTEGER,$colPrivacyPolicy INTEGER)');
     } catch (e) {
       print(e);
     }

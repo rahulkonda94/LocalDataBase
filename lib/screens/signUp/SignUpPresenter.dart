@@ -14,6 +14,7 @@ class SignUpPresenter implements AbstractSignUpPresenter {
   @override
   void onSignUp(SignUpDetail signUpDetail) async {
     final Future<Database> dbFuture = databaseHelper.initializeDatabase();
+    print(123);
     try {
     int result = await databaseHelper.insertMember(signUpDetail);
       if (result != 0) {

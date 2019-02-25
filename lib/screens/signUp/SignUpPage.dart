@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_masked_text/flutter_masked_text.dart';
 import '../../model/SignUpDetail.dart';
 import './SignUpAbstract.dart';
 import './SignUpPresenter.dart';
@@ -16,7 +15,6 @@ class SignUpPage extends StatefulWidget {
 
 class _SignUpPageState extends State<SignUpPage> implements AbstractSignUpPage {
   GlobalKey<ScaffoldState> scaffoldKey;
-  MaskedTextController dobController = MaskedTextController(mask: '00/00/0000');
 
   SignUpDetail signUpDetail;
   AbstractSignUpPresenter presenter;
@@ -157,16 +155,15 @@ class _SignUpPageState extends State<SignUpPage> implements AbstractSignUpPage {
             Container(
               child: Container(
                 child: TextFormField(
-                  controller: dobController,
-                  keyboardType: TextInputType.number,
+                  keyboardType: TextInputType.datetime,
                   decoration: InputDecoration(
-                    hintText: 'DD/MM/YYYY',
+                    hintText: 'DD-MM-YYYY',
                     labelText: 'DOB',
                     icon: const Icon(Icons.date_range),
                   ),
                   validator: (val) =>
                       val.length == 0 ? 'Date of Birth is empty' : null,
-                  onSaved: (val) => signUpDetail.dob = int.parse(val),
+                  onSaved: (val) => signUpDetail.dob = val,
                 ),
                 padding: const EdgeInsets.only(right: 20.0),
               ),
@@ -182,7 +179,7 @@ class _SignUpPageState extends State<SignUpPage> implements AbstractSignUpPage {
                     icon: const Icon(Icons.mobile_screen_share),
                   ),
                   validator: (val) =>
-                      val.length == 10 ? 'mobile number not valid' : null,
+                      val.length != 10 ? 'mobile number not valid' : null,
                   onSaved: (val) => signUpDetail.mobile = int.parse(val),
                 ),
                 padding: const EdgeInsets.only(right: 20.0),
