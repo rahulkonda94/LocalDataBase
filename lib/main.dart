@@ -2,12 +2,11 @@ import 'package:flutter/material.dart';
 import './screens/login/LoginPage.dart';
 import './screens/signUp/SignUpPage.dart';
 
-
 void main() => runApp(MyApp());
 
 final Map<String, WidgetBuilder> routes = {
-  '/login'  : (BuildContext context) => LoginPage(),
-  '/signup': (BuildContext context) =>  SignUpPage(),
+  '/login': (BuildContext context) => LoginPage(),
+  '/signup': (BuildContext context) => SignUpPage(),
 };
 
 class MyApp extends StatelessWidget {
@@ -24,4 +23,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-

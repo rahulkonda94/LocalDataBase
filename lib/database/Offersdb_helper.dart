@@ -53,7 +53,7 @@ class OffersDatabaseHelper {
         'CREATE TABLE $offerTable($colId INTEGER PRIMARY KEY, $colTitle TEXT, $colstartDate INTEGER, $colterms TEXT, $colofferImage TEXT,$colDescription TEXT, $colbrandName TEXT, $colexpiryDate INTEGER)');
   }
 
-  // Fetch Operation: Get all note objects from database
+  // Fetch Operation: Get all Offer objects from database
   Future<List<Map<String, dynamic>>> getOfferMapList() async {
     Database db = await this.database;
 
@@ -74,7 +74,7 @@ class OffersDatabaseHelper {
   }
 
   // Update Operation: Update a OfferDetail object and save it to database
-  Future<int> updateNote(OfferDetail offer) async {
+  Future<int> updateOffer(OfferDetail offer) async {
     var db = await this.database;
     var result = await db.update(offerTable, offer.toMap(),
         where: '$colId = ?', whereArgs: [offer.id]);

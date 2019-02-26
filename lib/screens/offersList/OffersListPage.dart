@@ -5,6 +5,7 @@ import './../offersDetail/OfferDetailPage.dart';
 import 'dart:convert';
 
 import './OffersListAbsract.dart';
+import './../offerEdit/OfferEditPage.dart';
 
 class OffersListPage extends StatefulWidget {
   OffersListPage({Key key, this.title}) : super(key: key);
@@ -95,7 +96,13 @@ class _OffersListPageState extends State<OffersListPage>
                 ),
                 IconButton(
                   icon: Icon(Icons.edit),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => OfferEditPage(offerDetail)),
+                    );
+                  },
                 ),
                 IconButton(
                   icon: Icon(Icons.delete),
